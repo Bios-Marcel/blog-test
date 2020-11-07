@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+<link rel="stylesheet" href="/base.css">
+
+<link rel="icon" href="data:,"/>
+<title>A Month Into Solus Budgie | Marcel Schramm</title>
+
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="UTF-8"/>
+<meta name="author" content="Marcel Schramm"/>
+<meta property="og:locale" content="en_GB"/>
+<meta property="og:site_name" content="Marcel Schramm"/>
+<meta property="og:title" content="A Month Into Solus Budgie" />
+<meta property="og:type" content="article"/>
+<meta property="article:tag" content="linux"/>
+<meta property="article:tag" content="review"/>
+<meta property="article:published_time" content="2018-05-27T00:00:00+00:00" />
+</head>
+<body>
+<header>
+<div class="site-info">
+<h1 class="site-name"><a href="/">Marcel Schramm</a></h1>
+</div>
+<nav>
+<a class="menu-link" href="/">Home</a>
+<a class="menu-link" href="/pages/about.html">About</a>
+</nav>
+</header>
+<article>
+<h1>A Month Into Solus Budgie</h1>
+<p class="authoring-date">Written on May 27, 2018</p>
+<p>A while ago I decided to start abandoning proprietary services, one of those was windows.<p>
+
+<h2>Backstory</h2>
+
+<p>The first Linux I had ever seen and actively used was <q>open SUSE</q> in 2011 I believe, I was about 13 years old at that time.</p>
+
+<p>I was just a "normal" user and solely used it to play games and surf the web.
+At some point I stopped using SUSE ... I forgot why, but probably due to me being too stupid to achieve what I wanted to achieve.
+I then switched to <q>Windows 7</q> and used it for about 3 to 4 years and then decided to get <a href="https://www.ubuntu.com/">Ubuntu</a>, at that
+point and time I had to abandon all the games that I had played on windows.
+I missed my games and switched back to windows 7 after about 3 months.
+As soon as Windows 10 was available I did the free upgrade and was quite satisfied, since Windows 10 fixed a lot of the quirks that Windows 7 had:</p>
+
+<ul>
+<li>Flat Design</li>
+<li>Multiple workspaces (desktops)</li>
+<li>windows snapping with proper multi monitor support</li>
+<li>It was faster</li>
+<li>more ... (I am too lazy to list more)</li>
+</ul>
+
+<p>on the other hand it introduced some annoying stuff, like <q>builtin advertisements</q> in the startmenu, <q>preinstalled bloatware</q>, <q>annoying popups</q> and <q>additional telemetry</q> that you can't easily disable.
+Also they started to replace more and more of old Windows 8.1 and below GUI with their new fluent design GUI ... which to be honest is worse in my opinion. Well ... enough talking about windows.</p>
+
+<h2>Solus</h2>
+
+<p>In the beginning I decided to go with <a href="https://www.opensuse.org/">open SUSE</a> due to the fact that it was the first linux I had ever seen and used. After only 3 days of pain (KDE 5 Plasma constantly crashing) I switched to Solus.</p>
+
+<p>Just like <q>open SUSE</q>, Solus wasn't based on another big distro, like <q>Ubuntu</q> is based on <q>Debian</q>. One downside was, that I can't use any <q>.rpm</q> or <q>.deb</q> packages (at least not by default). On the other hand we have <a href="https://snapcraft.io/">Snap</a> and <a href="https://flatpak.org/">Flatpak</a> nowadays, which provide a way to easily install software across different linux distributions. Most of the software I needed was available in official Solus repositories, those are quite up-to-date, sadly they are lacking some old and common stuff like <q>xterm</q>, simply because <q>there is no need for it</q>.</p>
+
+<p>I really hate waiting, which is why I am happy that Solus starts up quick, logs you in quick and even shuts down lighting fast.</p>
+
+<p>I actually don't use much operating system features, but neither did I use much operating system features when I was on Windows though.
+I just need a minimal OS, which is fast, up-to-date and looks good, Solus satisfies all of those needs in my opinion.</p>
+
+<h3>Budgie</h3>
+
+<p>Solus is available with different desktop environments:</p>
+
+<ul>
+<li>Gnome</li>
+<li>Mate</li>
+<li>Budgie</li>
+</ul>
+
+<p>I decided to go for Budgie, simply because it looked minimal and well designed. I also wanted to try something new. Overall I like Budgie.</p>
+
+<p>It comes with some <q>Windows 10</q>-like Notification center, called <q>Raven</q> which also integrates media playback:</p>
+
+<img src="/images/solusbudgiepost/mediaplayback.png" loading="lazy" alt="Media playback raven"/>
+
+<p>and easy access to your audio input and output devices:</p>
+
+<img src="/images/solusbudgiepost/audiocontrol.png" loading="lazy" alt="Audio control"/>
+
+<p>It also supports system tray icons by default, unlike Gnome nowadays.</p>
+
+<p>It has an application menu for listing and grouping installed applications, the <q>Budgie Menu</q>, sadly <a href="https://github.com/solus-project/budgie-desktop/issues/1444">i have experienced heavy problems with said component</a>, which is why I deactivated it and use the <q>run command prompt</q> instead. The <q>run command prompt</q> only allows you to type in a name and execute one of the search results. Back on Windows 10 I only ever used the start menu to do exactly that, so I am not missing out on anything here.</p>
+
+<p>Budgie has some Gnome integration and ships with some of the default gnome tools. I am not the biggest friend of the gnome tooling. As I already mentioned I used KDE for a short while, I really loved it, especially the file manager (<q>Dolphin</q>), which had terminal integration and multi pane support and the terminal (<q>Konsole</q>) which supports horizontal and vertical tiling.</p>
+
+<p>Budige comes with <q>Nautilus</q>, which doesn't support the two features I like about <q>Dolphin</q>, so I ended up deleting <q>Nautilus</q> and am now using <q>Caja</q>, which is a fork of the old <q>Nautilus</q> (back when it still had features). I first tried using Dolphin, but sadly it didn't work that well without the KDE desktop.</p>
+
+<p>I removed <q>gnome-terminal</q> and replaced it with <a href="https://github.com/gnunn1/tilix">Tilix</a>. I went for Tilix due to the fact that it supports tabs, horizontal and vertical tiling and easy customization of keybindings.</p>
+
+<h3>Gaming</h3>
+
+<p>Okay, let's talk about the actually important stuff ... playing games!
+I bet you all know, that windows is usually the best choice for gaming, sadly I can't deny that fact.</p>
+
+<p>However, Solus allows easy installation of 32-bit and 64-bit NVIDIA drivers, reducing the initial problems a lot. And by using <a href="https://lutris.net/">Lutris</a>, you can easily install a lot of different Windows-only games.</p>
+
+<p>Lutris can manage games for different platforms:</p>
+
+<ul>
+<li>wine</li>
+<li>native Linux games</li>
+<li>Linux Steam</li>
+<li>Windows Steam</li>
+<li>Browser</li>
+<li>and a couple more</li>
+</ul>
+
+<p>allowing you to easily manage your game library using a single application.</p>
+
+<p>You could also manually install the native Steam client via wine, but I would suggest using Lutris if possible, as you’d have to do all the dependency management for the games yourself otherwise and probably you’d even have to create two wine prefixes, one for 64-Bit Steam and one for 32-Bit Steam.</p>
+
+<p>Solus allows you to install the native Steam client via <q>eopkg</q>, its integrated package manger, in addition to that, it also offers <a href="https://github.com/solus-project/linux-steam-integration">improved integration for steam</a>.</p>
+
+
+<p>Back on windows I played a lot of different games:</p>
+
+<ul>
+<li>Dark Souls 2</li>
+<li>Dark Souls 3</li>
+<li>Dishonored 2</li>
+<li>Warframe</li>
+<li>Heroes of the Storm</li>
+<li>Hearthstone</li>
+<li>League of Legends</li>
+<li>Brawlhalla</li>
+<li>Battlerite</li>
+<li>CS:GO</li>
+<li>Fortnite</li>
+<li>Osu!</li>
+<li><em>Insert bunch of indie games here</em></li>
+</ul>
+
+<p>Except for some of the indie games and CS:GO, those are all non-linux titles.</p>
+
+<p>It is no problem to run low graphics games like, Brawlhalla, League of Legends or Hearthstone via Wine, but games like Dark Souls, Dishonored or Fortnite aren't playable unless you have very powerful hardware.</p>
+
+<p>Even though I have a GTX 1050 TI, I am unable to play Warframe, Dishonored, Heroes of the Storm or Dark Souls via wine.</p>
+
+<p>Currently, those are the Windows-only games that I got up and running (putting native Linux titles aside):</p>
+
+<ul>
+<li>League of Legends</li>
+<blockquote>I am using the OpenGL version with low graphic settings, since directX9 causes heavy client bugs</blockquote></li>
+<li>Brawlhalla
+<blockquote>Has lags sometimes, but runs fine most of the time.</blockquote></li>
+<li>Battlerite
+<blockquote>Runs fine with directX9</blockquote></li>
+<li>Hearthstone
+<blockquote>Might not run perfect at all times, but it is a card game, so it doesn’t really matter<blockquote></li>
+<li>Osu!
+<blockquote>Runs fluid and my Tablet (Huion H420) also works. In order to easily add new songs to the song directory, I use the <q>mv</q> command as my default application for <q>.osz</q> files.</blockquote></li>
+</ul>
+
+<p>And those are the ones that I didn’t get to work:</p>
+
+<ul>
+<li>Heroes of the Storm
+<blockquote>This really surprised me, the game had pretty stable fps of 120+, but the fps dropped to <q>0</q> for a moment, as soon as any character used an ability. Since using abilities is what you do the whole time, the game was simply unplayable.</blockquote></li>
+<li>Dark Souls 3
+<blockquote>I don’t know why, but the game simply didn’t start, I might investigate this further at some point.</blockquote></li>
+<li>Fortnite
+<blockquote>Since Fortnite uses BattleEye anti-cheat, which doesn’t work with wine, this game can’t be played.<blockquote></li>
+<li>Warframe
+<blockquote>Well, it works, but only at unstable 40 fps on minimal settings, which is no fun</blockquote></li>
+</ul>
+
+<h3>Conclusion</h3>
+
+<p>I can recommend Solus for daily usage. Most people might not be as picky about their file manager and terminal as I am, so that shouldn't be something that most users would have to mess with.</p>
+
+<p>Probably Solus shouldn’t have been my first choice though, since I obviously preferred the tooling that KDE 5 Plasma gave me, but sadly I had already lost trust in it after seeing how buggy it is on open SUSE Tumbleweed and open SUSE Leap. I didn’t feel like wasting my time to give it a third try.</p>
+
+<hr/>
+
+<p>I have probably just scratched the surface of what might be important to some people, sorry for that.</p>
+
+<p>If you find any mistakes, like wrong information or typos, feel free to submit a pull request.</p>
+<script src="https://utteranc.es/client.js"
+        repo="Bios-Marcel/bios-marcel.github.io"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        async>
+</script>
+<noscript>
+<p><b>If you wish to access the comment section, you need to enable JavaScript.</b></p>
+</noscript>
+</article>
+<footer>
+<hr>
+<div class="footer-bar">
+<a href="/feed.xml">RSS-Feed</a>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+<link rel="stylesheet" href="/base.css">
+
+<link rel="icon" href="data:,"/>
+<title>Think Twice Before Using Varargs | Marcel Schramm</title>
+
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="UTF-8"/>
+<meta name="author" content="Marcel Schramm"/>
+<meta property="og:locale" content="en_GB"/>
+<meta property="og:site_name" content="Marcel Schramm"/>
+<meta property="og:title" content="Think Twice Before Using Varargs" />
+<meta property="og:type" content="article"/>
+<meta property="article:tag" content="java"/>
+<meta property="article:tag" content="programming"/>
+<meta property="article:published_time" content="2018-12-11T00:00:00+00:00" />
+</head>
+<body>
+<header>
+<div class="site-info">
+<h1 class="site-name"><a href="/">Marcel Schramm</a></h1>
+</div>
+<nav>
+<a class="menu-link" href="/">Home</a>
+<a class="menu-link" href="/pages/about.html">About</a>
+</nav>
+</header>
+<article>
+<h1>Think Twice Before Using Varargs</h1>
+<p class="authoring-date">Written on December 11, 2018</p>
+<p>Varargs, which is short for
+<a href="https://en.wikipedia.org/wiki/Variadic_function">variadic arguments</a>,
+are a pretty cool thing. They allow your functions to take from 0 to n
+arguments, the amount of possible function arguments might differ from
+language to language though. Most of you have probably already used a
+function which makes use of varargs. Throughout this blog post, I am gonna
+use Java for examples.</p>
+
+<p>As an example, let's look at <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#format(java.lang.String,%20java.lang.Object...">String.format(String, Object...)</a>:</p>
+
+<code><pre>
+String name = "Marcel"
+String.format("Hello %s.%nThe weather is quite good today.", name);
+</pre></code>
+
+<p>The resulting String would look like this:</p>
+
+<samp><pre>
+Hello Marcel.
+The weather is quite good today.
+</pre></samp>
+
+<p>We could also use the function to just add a line break, but pass no additional
+variables:</p>
+
+<code><pre>
+String name = "Marcel"
+String.format("Hello.%nThe weather is quite good today.");
+</pre></code>
+
+<p>This would still compile, since varargs allow from 0 to n arguments, which
+is totally fine for our use case though.</p>
+
+<p>But let's look at a more dangerous example:</p>
+
+<code><pre>
+class Screamer {
+    /**
+     * Screams each passed word onto a new line.
+     *
+     * @params words are the things to be screamed
+     */
+    void screamWords(String... words) {
+        for( String word: words ) {
+            System.out.println("Scream: " + words.toUpperCase());
+        }
+    }
+}
+
+class IntenseScreamer extends Screamer{
+    @Override
+    void screamWords(String... words) {
+        //Intensify the words by adding exclamation marks!
+        for( int index = 0; index &lt; words.length; index++ ) {
+            words[index] = words[index] + "!!!";
+        }
+
+        super.screamWords();
+    }
+}
+</pre></code>
+
+<p>In case you haven't noticed the error, I forgot passing the words to the
+supercall. That happens quite easy, since it allows 0 arguments as well.
+In such case, an empty array will be passed, since varargs are nothing but
+arrays under the hood.</p>
+
+<p>I am not telling you to avoid varargs completely, but sometimes you might just
+want to use an array, as it will give you some compile-time safety, since you
+have to at least pass an empty array.</p>
+
+<p>In my opinion, you should avoid using varargs if you could potentially pass
+an incorrect amount of values, since there can not be any compile-time checking
+without using third party tools.</p>
+
+<p>This actually happened to me at work, which is why I bring it up. I wasted a
+while before I found the problem, since I didn't check every place where the
+parameters were passed on. I just knew that nobody mutates them and I knew
+that they were passed correctly in the beginning, so why the hell was I
+getting an empty array.</p>
+
+<b>EDIT:</b>
+
+<p>A colleague pointed out that it might annoy some people to always create arrays,
+which is kind of the reason why varargs are so nice to use. A possible solution
+to that problem would be a mandatory parameter followed by a vararg parameter of
+the same type.</p>
+
+<p>Here is an example:</p>
+
+<code><pre>
+//Defining your method
+void hello(String nameOne, String... restOfNames) {
+    String names[] = new String[restOfNames.length + 1];
+    names[0] = nameOne;
+    System.arraycopy(restOfNames, 0, names, 1, restOfNames.length);
+
+    //Implementation...
+}
+
+//Calling it
+hello("Marcel", "Jeff", "John");
+</pre></code>
+
+As you can see, this requires some additional logic, but it would usage wise be
+the same for the methodcaller, unless the intention was to actually pass a
+complete array, in that case the caller would have to create a new smaller array
+and pass the first cell of the old array as the first parameter. This would also
+be worse performance wise, even though this would usually not be critical.
+<script src="https://utteranc.es/client.js"
+        repo="Bios-Marcel/bios-marcel.github.io"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        async>
+</script>
+<noscript>
+<p><b>If you wish to access the comment section, you need to enable JavaScript.</b></p>
+</noscript>
+</article>
+<footer>
+<hr>
+<div class="footer-bar">
+<a href="/feed.xml">RSS-Feed</a>
+</div>
+</footer>
+</body>
+</html>
