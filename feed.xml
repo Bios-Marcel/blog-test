@@ -6,230 +6,6 @@
     <managingEditor>marcelschr@protonmail.com (Marcel Schramm)</managingEditor>
     <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
     <item>
-      <title>Think Twice Before Using Varargs</title>
-      <link>https:/marcelschr.me/blog-test/articles/think-twice-before-using-varargs.html</link>
-      <description>thoughts on random topics, but mostly tech</description>
-      <content:encoded><![CDATA[<p>Varargs, which is short for
-<a href="https://en.wikipedia.org/wiki/Variadic_function">variadic arguments</a>,
-are a pretty cool thing. They allow your functions to take from 0 to n
-arguments, the amount of possible function arguments might differ from
-language to language though. Most of you have probably already used a
-function which makes use of varargs. Throughout this blog post, I am gonna
-use Java for examples.</p>
-
-<p>As an example, let's look at <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#format(java.lang.String,%20java.lang.Object...">String.format(String, Object...)</a>:</p>
-
-<code><pre>
-String name = "Marcel"
-String.format("Hello %s.%nThe weather is quite good today.", name);
-</pre></code>
-
-<p>The resulting String would look like this:</p>
-
-<samp><pre>
-Hello Marcel.
-The weather is quite good today.
-</pre></samp>
-
-<p>We could also use the function to just add a line break, but pass no additional
-variables:</p>
-
-<code><pre>
-String name = "Marcel"
-String.format("Hello.%nThe weather is quite good today.");
-</pre></code>
-
-<p>This would still compile, since varargs allow from 0 to n arguments, which
-is totally fine for our use case though.</p>
-
-<p>But let's look at a more dangerous example:</p>
-
-<code><pre>
-class Screamer {
-    /**
-     * Screams each passed word onto a new line.
-     *
-     * @params words are the things to be screamed
-     */
-    void screamWords(String... words) {
-        for( String word: words ) {
-            System.out.println("Scream: " + words.toUpperCase());
-        }
-    }
-}
-
-class IntenseScreamer extends Screamer{
-    @Override
-    void screamWords(String... words) {
-        //Intensify the words by adding exclamation marks!
-        for( int index = 0; index &lt; words.length; index++ ) {
-            words[index] = words[index] + "!!!";
-        }
-
-        super.screamWords();
-    }
-}
-</pre></code>
-
-<p>In case you haven't noticed the error, I forgot passing the words to the
-supercall. That happens quite easy, since it allows 0 arguments as well.
-In such case, an empty array will be passed, since varargs are nothing but
-arrays under the hood.</p>
-
-<p>I am not telling you to avoid varargs completely, but sometimes you might just
-want to use an array, as it will give you some compile-time safety, since you
-have to at least pass an empty array.</p>
-
-<p>In my opinion, you should avoid using varargs if you could potentially pass
-an incorrect amount of values, since there can not be any compile-time checking
-without using third party tools.</p>
-
-<p>This actually happened to me at work, which is why I bring it up. I wasted a
-while before I found the problem, since I didn't check every place where the
-parameters were passed on. I just knew that nobody mutates them and I knew
-that they were passed correctly in the beginning, so why the hell was I
-getting an empty array.</p>
-
-<b>EDIT:</b>
-
-<p>A colleague pointed out that it might annoy some people to always create arrays,
-which is kind of the reason why varargs are so nice to use. A possible solution
-to that problem would be a mandatory parameter followed by a vararg parameter of
-the same type.</p>
-
-<p>Here is an example:</p>
-
-<code><pre>
-//Defining your method
-void hello(String nameOne, String... restOfNames) {
-    String names[] = new String[restOfNames.length + 1];
-    names[0] = nameOne;
-    System.arraycopy(restOfNames, 0, names, 1, restOfNames.length);
-
-    //Implementation...
-}
-
-//Calling it
-hello("Marcel", "Jeff", "John");
-</pre></code>
-
-As you can see, this requires some additional logic, but it would usage wise be
-the same for the methodcaller, unless the intention was to actually pass a
-complete array, in that case the caller would have to create a new smaller array
-and pass the first cell of the old array as the first parameter. This would also
-be worse performance wise, even though this would usually not be critical.]]></content:encoded>
-      <pubDate>Tue, 11 Dec 2018 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Why do people expect software to be for free?</title>
-      <link>https:/marcelschr.me/blog-test/articles/why-do-people-expect-software-to-be-for-free.html</link>
-      <description>thoughts on random topics, but mostly tech</description>
-      <content:encoded><![CDATA[<p>
-Recently I have been wondering why everyone seems to expect software
-to be free. Free software has existed for quite a while, but
-many people have started to expect software to be free by default.
-</p>
-
-<p>
-I assume that many people think that the software they use
-in their daily life is already free. Let's take Facebook as an example.
-Do you think Facebook is free? Yes, it is free to use, however, this doesn't
-mean that you aren't paying in a way. When using Facebook you are paying
-with your personal data and you are probably seeing ads, unless you are
-using an ad-blocker. By the way, even some ad-blockers aren't completely
-free, some actually mine data or only block ads that they aren't paid for.
-The same goes for other free-to-use software that you use.
-</p>
-
-<p>
-<em>
-In case you are interested in using an ad-blocker, I suggest you take
-at look at <a href="https://github.com/gorhill/uBlock)">UBlock Origin</a>.
-</em>
-</p>
-
-<p>
-Okay, so what do we pay for? We pay for games, right? Buying a AAA game
-for 60€ still seems to be accepted by most gamers. However, would they buy
-a 5€ game for their smartphone? Unlikely. I have noticed that many people
-seem to expect smartphone apps to be free (subsidized by ads) or extremly
-cheap. Why do many people deem 5€ for a smartphone application to be much?
-I assume this is due to the fact that smartphone apps feel
-more like a "side thing" that you just use in order to keep the boredom away.
-There are also apps that don't focus on entertainment. As far as I know,
-those kind of apps are less used by the average smartphone user though.
-</p>
-
-<p>
-Do I pay for mobile applications? No, not really, the only app I have ever bought
-was Teamspeak 3 and I refunded it, since it was terrible. However, I do not like
-to use applications that are subsidized by advertisements, because I believe that
-the advertisement model is completely broken. Applications that implement an
-advertisement model often decrease in user experience. Either by showing popups,
-using up the space on your screen or even adding trash to your devices system.
-I generally believe the way that most advertisements are made today, is very
-dishonest. Whenever seeing an advertisement on the TV, I feel like I am being
-lied to.
-</p>
-
-<p>
-In order to avoid such subsidation models, I try to use as much truly
-<b>free software</b> as possible, also referred to as <b>free open source software</b>.
-However, people should be paid for the work they do, right?
-</p>
-
-<p>
-Yes, everyone should be paid for the work they do, at least I believe so.
-So, what can you do?
-I suggest you start to try using more free open source software and if you
-like what you are getting, drop a donation from time to time, it really helps!
-Some software projects are actually completely subsidized by donations, for
-example an operating system called <a href="https://elementary.io/de/">Elementary OS</a>.
-It has adopted the `pay what you want` model, meaning that if you want to, you
-can just not pay anything. The system also has a software store that allows you
-to optionally pay for anything that you install via the store. Such principles
-are viable and are being used, however, most companies still try to maximize
-their outcome by any chance and therefore such things will unlikely ever be
-adopted by big companies.
-</p>
-
-<p>
-Another good payment model is the one that <a href="https://play.euw.leagueoflegends.com/">League of Legends</a> is using.
-You can download and play the game for free, however, you can still
-purchase ingame items in exchange for real money. Those ingame items
-don't provide the player any advantages over the other players, since
-they are only visual items. Those items can be skins for characters
-or emoticons and ward-skins. League of Legends has been doing it this way
-for a long time now and it seems to work just fine.
-</p>
-
-<p>
-<b>EDIT: Someone just pointed out that you could also buy
-champions(playable characters). In the beginning you only have a specific
-set of characters. Until season 6 or 7 it was quite hard to get many
-characters in a short amount of time. At a certain point they made it
-much easier though.</b>
-</p>
-
-<p>
-So, what's the point of this post? I'd like to encourage you to start paying for
-software. I assume just like me, many of you are annoyed by advertisements,
-especially looking at mobile aplications and websites. If more people were to
-pay for software and media, then less companies would decide to start
-build their products around an advertisement model. I am not telling you that
-you have to use free open source software
-though, that's just my opinion. However, think about paying for what you use,
-because just like the machine that you use for reading this post, someone
-had to produce that software.
-</p>
-
-<p>
-Food for thought: Why do you think that no one expects physical goods or
-services should be free?    
-</p>]]></content:encoded>
-      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
-    </item>
-    <item>
       <title>A Month Into Solus Budgie</title>
       <link>https:/marcelschr.me/blog-test/articles/back-to-linux.html</link>
       <description>thoughts on random topics, but mostly tech</description>
@@ -387,6 +163,230 @@ I bet you all know, that windows is usually the best choice for gaming, sadly I 
 
 <p>If you find any mistakes, like wrong information or typos, feel free to submit a pull request.</p>]]></content:encoded>
       <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Why do people expect software to be for free?</title>
+      <link>https:/marcelschr.me/blog-test/articles/why-do-people-expect-software-to-be-for-free.html</link>
+      <description>thoughts on random topics, but mostly tech</description>
+      <content:encoded><![CDATA[<p>
+Recently I have been wondering why everyone seems to expect software
+to be free. Free software has existed for quite a while, but
+many people have started to expect software to be free by default.
+</p>
+
+<p>
+I assume that many people think that the software they use
+in their daily life is already free. Let's take Facebook as an example.
+Do you think Facebook is free? Yes, it is free to use, however, this doesn't
+mean that you aren't paying in a way. When using Facebook you are paying
+with your personal data and you are probably seeing ads, unless you are
+using an ad-blocker. By the way, even some ad-blockers aren't completely
+free, some actually mine data or only block ads that they aren't paid for.
+The same goes for other free-to-use software that you use.
+</p>
+
+<p>
+<em>
+In case you are interested in using an ad-blocker, I suggest you take
+at look at <a href="https://github.com/gorhill/uBlock)">UBlock Origin</a>.
+</em>
+</p>
+
+<p>
+Okay, so what do we pay for? We pay for games, right? Buying a AAA game
+for 60€ still seems to be accepted by most gamers. However, would they buy
+a 5€ game for their smartphone? Unlikely. I have noticed that many people
+seem to expect smartphone apps to be free (subsidized by ads) or extremly
+cheap. Why do many people deem 5€ for a smartphone application to be much?
+I assume this is due to the fact that smartphone apps feel
+more like a "side thing" that you just use in order to keep the boredom away.
+There are also apps that don't focus on entertainment. As far as I know,
+those kind of apps are less used by the average smartphone user though.
+</p>
+
+<p>
+Do I pay for mobile applications? No, not really, the only app I have ever bought
+was Teamspeak 3 and I refunded it, since it was terrible. However, I do not like
+to use applications that are subsidized by advertisements, because I believe that
+the advertisement model is completely broken. Applications that implement an
+advertisement model often decrease in user experience. Either by showing popups,
+using up the space on your screen or even adding trash to your devices system.
+I generally believe the way that most advertisements are made today, is very
+dishonest. Whenever seeing an advertisement on the TV, I feel like I am being
+lied to.
+</p>
+
+<p>
+In order to avoid such subsidation models, I try to use as much truly
+<b>free software</b> as possible, also referred to as <b>free open source software</b>.
+However, people should be paid for the work they do, right?
+</p>
+
+<p>
+Yes, everyone should be paid for the work they do, at least I believe so.
+So, what can you do?
+I suggest you start to try using more free open source software and if you
+like what you are getting, drop a donation from time to time, it really helps!
+Some software projects are actually completely subsidized by donations, for
+example an operating system called <a href="https://elementary.io/de/">Elementary OS</a>.
+It has adopted the `pay what you want` model, meaning that if you want to, you
+can just not pay anything. The system also has a software store that allows you
+to optionally pay for anything that you install via the store. Such principles
+are viable and are being used, however, most companies still try to maximize
+their outcome by any chance and therefore such things will unlikely ever be
+adopted by big companies.
+</p>
+
+<p>
+Another good payment model is the one that <a href="https://play.euw.leagueoflegends.com/">League of Legends</a> is using.
+You can download and play the game for free, however, you can still
+purchase ingame items in exchange for real money. Those ingame items
+don't provide the player any advantages over the other players, since
+they are only visual items. Those items can be skins for characters
+or emoticons and ward-skins. League of Legends has been doing it this way
+for a long time now and it seems to work just fine.
+</p>
+
+<p>
+<b>EDIT: Someone just pointed out that you could also buy
+champions(playable characters). In the beginning you only have a specific
+set of characters. Until season 6 or 7 it was quite hard to get many
+characters in a short amount of time. At a certain point they made it
+much easier though.</b>
+</p>
+
+<p>
+So, what's the point of this post? I'd like to encourage you to start paying for
+software. I assume just like me, many of you are annoyed by advertisements,
+especially looking at mobile aplications and websites. If more people were to
+pay for software and media, then less companies would decide to start
+build their products around an advertisement model. I am not telling you that
+you have to use free open source software
+though, that's just my opinion. However, think about paying for what you use,
+because just like the machine that you use for reading this post, someone
+had to produce that software.
+</p>
+
+<p>
+Food for thought: Why do you think that no one expects physical goods or
+services should be free?    
+</p>]]></content:encoded>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Think Twice Before Using Varargs</title>
+      <link>https:/marcelschr.me/blog-test/articles/think-twice-before-using-varargs.html</link>
+      <description>thoughts on random topics, but mostly tech</description>
+      <content:encoded><![CDATA[<p>Varargs, which is short for
+<a href="https://en.wikipedia.org/wiki/Variadic_function">variadic arguments</a>,
+are a pretty cool thing. They allow your functions to take from 0 to n
+arguments, the amount of possible function arguments might differ from
+language to language though. Most of you have probably already used a
+function which makes use of varargs. Throughout this blog post, I am gonna
+use Java for examples.</p>
+
+<p>As an example, let's look at <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#format(java.lang.String,%20java.lang.Object...">String.format(String, Object...)</a>:</p>
+
+<code><pre>
+String name = "Marcel"
+String.format("Hello %s.%nThe weather is quite good today.", name);
+</pre></code>
+
+<p>The resulting String would look like this:</p>
+
+<samp><pre>
+Hello Marcel.
+The weather is quite good today.
+</pre></samp>
+
+<p>We could also use the function to just add a line break, but pass no additional
+variables:</p>
+
+<code><pre>
+String name = "Marcel"
+String.format("Hello.%nThe weather is quite good today.");
+</pre></code>
+
+<p>This would still compile, since varargs allow from 0 to n arguments, which
+is totally fine for our use case though.</p>
+
+<p>But let's look at a more dangerous example:</p>
+
+<code><pre>
+class Screamer {
+    /**
+     * Screams each passed word onto a new line.
+     *
+     * @params words are the things to be screamed
+     */
+    void screamWords(String... words) {
+        for( String word: words ) {
+            System.out.println("Scream: " + words.toUpperCase());
+        }
+    }
+}
+
+class IntenseScreamer extends Screamer{
+    @Override
+    void screamWords(String... words) {
+        //Intensify the words by adding exclamation marks!
+        for( int index = 0; index &lt; words.length; index++ ) {
+            words[index] = words[index] + "!!!";
+        }
+
+        super.screamWords();
+    }
+}
+</pre></code>
+
+<p>In case you haven't noticed the error, I forgot passing the words to the
+supercall. That happens quite easy, since it allows 0 arguments as well.
+In such case, an empty array will be passed, since varargs are nothing but
+arrays under the hood.</p>
+
+<p>I am not telling you to avoid varargs completely, but sometimes you might just
+want to use an array, as it will give you some compile-time safety, since you
+have to at least pass an empty array.</p>
+
+<p>In my opinion, you should avoid using varargs if you could potentially pass
+an incorrect amount of values, since there can not be any compile-time checking
+without using third party tools.</p>
+
+<p>This actually happened to me at work, which is why I bring it up. I wasted a
+while before I found the problem, since I didn't check every place where the
+parameters were passed on. I just knew that nobody mutates them and I knew
+that they were passed correctly in the beginning, so why the hell was I
+getting an empty array.</p>
+
+<b>EDIT:</b>
+
+<p>A colleague pointed out that it might annoy some people to always create arrays,
+which is kind of the reason why varargs are so nice to use. A possible solution
+to that problem would be a mandatory parameter followed by a vararg parameter of
+the same type.</p>
+
+<p>Here is an example:</p>
+
+<code><pre>
+//Defining your method
+void hello(String nameOne, String... restOfNames) {
+    String names[] = new String[restOfNames.length + 1];
+    names[0] = nameOne;
+    System.arraycopy(restOfNames, 0, names, 1, restOfNames.length);
+
+    //Implementation...
+}
+
+//Calling it
+hello("Marcel", "Jeff", "John");
+</pre></code>
+
+As you can see, this requires some additional logic, but it would usage wise be
+the same for the methodcaller, unless the intention was to actually pass a
+complete array, in that case the caller would have to create a new smaller array
+and pass the first cell of the old array as the first parameter. This would also
+be worse performance wise, even though this would usually not be critical.]]></content:encoded>
+      <pubDate>Tue, 11 Dec 2018 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
