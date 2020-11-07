@@ -8,7 +8,7 @@
     <item>
       <title>Think Twice Before Using Varargs</title>
       <link>https:/marcelschr.me/blog-test/articles/think-twice-before-using-varargs.html</link>
-      <description></description>
+      <description>thoughts on random topics, but mostly tech</description>
       <content:encoded><![CDATA[<p>Varargs, which is short for
 <a href="https://en.wikipedia.org/wiki/Variadic_function">variadic arguments</a>,
 are a pretty cool thing. They allow your functions to take from 0 to n
@@ -118,13 +118,12 @@ the same for the methodcaller, unless the intention was to actually pass a
 complete array, in that case the caller would have to create a new smaller array
 and pass the first cell of the old array as the first parameter. This would also
 be worse performance wise, even though this would usually not be critical.]]></content:encoded>
-      <author>Marcel Schramm</author>
       <pubDate>Tue, 11 Dec 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Why do people expect software to be for free?</title>
       <link>https:/marcelschr.me/blog-test/articles/why-do-people-expect-software-to-be-for-free.html</link>
-      <description></description>
+      <description>thoughts on random topics, but mostly tech</description>
       <content:encoded><![CDATA[<p>
 Recently I have been wondering why everyone seems to expect software
 to be free. Free software has existed for quite a while, but
@@ -228,13 +227,12 @@ had to produce that software.
 Food for thought: Why do you think that no one expects physical goods or
 services should be free?    
 </p>]]></content:encoded>
-      <author>Marcel Schramm</author>
       <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>A Month Into Solus Budgie</title>
       <link>https:/marcelschr.me/blog-test/articles/back-to-linux.html</link>
-      <description></description>
+      <description>thoughts on random topics, but mostly tech</description>
       <content:encoded><![CDATA[<p>A while ago I decided to start abandoning proprietary services, one of those was windows.<p>
 
 <h2>Backstory</h2>
@@ -388,7 +386,6 @@ I bet you all know, that windows is usually the best choice for gaming, sadly I 
 <p>I have probably just scratched the surface of what might be important to some people, sorry for that.</p>
 
 <p>If you find any mistakes, like wrong information or typos, feel free to submit a pull request.</p>]]></content:encoded>
-      <author>Marcel Schramm</author>
       <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
     </item>
   </channel>
