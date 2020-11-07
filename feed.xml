@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Marcel Schramm</title>
-    <link>https://btw-i-use-arch.github.io</link>
+    <link>https://marcelschr.me/blog-test</link>
     <description>thoughts on random topics, but mostly tech</description>
     <managingEditor>marcelschr@protonmail.com (Marcel Schramm)</managingEditor>
     <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
     <item>
       <title>Think Twice Before Using Varargs</title>
-      <link>https:/btw-i-use-arch.github.io/articles/think-twice-before-using-varargs.html</link>
+      <link>https:/marcelschr.me/blog-test/articles/think-twice-before-using-varargs.html</link>
       <description></description>
       <content:encoded><![CDATA[<p>Varargs, which is short for
 <a href="https://en.wikipedia.org/wiki/Variadic_function">variadic arguments</a>,
@@ -123,7 +123,7 @@ be worse performance wise, even though this would usually not be critical.]]></c
     </item>
     <item>
       <title>Why do people expect software to be for free?</title>
-      <link>https:/btw-i-use-arch.github.io/articles/why-do-people-expect-software-to-be-for-free.html</link>
+      <link>https:/marcelschr.me/blog-test/articles/why-do-people-expect-software-to-be-for-free.html</link>
       <description></description>
       <content:encoded><![CDATA[<p>
 Recently I have been wondering why everyone seems to expect software
@@ -233,7 +233,7 @@ services should be free?
     </item>
     <item>
       <title>A Month Into Solus Budgie</title>
-      <link>https:/btw-i-use-arch.github.io/articles/back-to-linux.html</link>
+      <link>https:/marcelschr.me/blog-test/articles/back-to-linux.html</link>
       <description></description>
       <content:encoded><![CDATA[<p>A while ago I decided to start abandoning proprietary services, one of those was windows.<p>
 
