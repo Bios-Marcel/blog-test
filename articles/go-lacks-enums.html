@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+<link rel="stylesheet" type="text/css" href="/blog-test/base.css">
+
+<link rel="icon" href="data:,"/>
+<title>Go lacks enums | Marcel Schramm</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="UTF-8"/>
+<meta name="author" content="Marcel Schramm"/>
+<meta name="description" content="Thoughts on why the lack of enums is a small step backwards." />
+<meta property="og:locale" content="en_GB"/>
+<meta property="og:site_name" content="Marcel Schramm"/>
+<meta property="og:title" content="Go lacks enums" />
+<meta property="og:type" content="article"/>
+<meta property="article:tag" content="go"/>
+<meta property="article:tag" content="programming"/>
+<meta property="article:published_time" content="2020-09-20T00:00:00Z" />
+</head>
+<body>
+<header>
+<div class="site-info">
+<span class="site-name"><a href="/blog-test/">Marcel Schramm</a></span>
+</div>
+<nav>
+<a class="menu-link" href="/blog-test/">Home</a>
+<a class="menu-link" href="/blog-test/pages/about.html">About</a>
+</nav>
+</header>
+<article>
+<h1>Go lacks enums</h1>
+<p class="authoring-date">Written on 20 September 2020</p>
+<p>As a Java programmer, I heavily make use of enums.
+The reason is quite simple. Whenever I have a fixed set of values, i can easy
+iterate over them and switch over them. The reason why I really like switching
+over enums though, is that I am using an IDE that notifies me of every switch
+that doesn't handle all possible values of an enum. Let's say I had the
+following code:</p>
+
+<code><pre>
+public enum CarManufacturers {
+  FIAT,
+  FORD,
+  MERCEDES,
+  OPEN;
+}
+
+void someFunction(CarManufacturer manufacturer) {
+  switch (manufacturer) {
+    case FIAT:
+      //SOMETHING
+  }
+}
+</pre></code>
+
+<p>I would get an error stating that a switchcase I had wasn't handling all
+possible values and doesn't have a <code>default</code> case either. For those
+who don't know, the <code>default</code> case is basically a catch-all case
+for that can be used as a last resort. While switch-cases over enums are
+technically not exhaustive in Java, probably because of being able to
+technically extend an enum via reflection, the IDE still treats it that way.
+If you extend an enum at runtime you deserve to burn either way.</p>
+
+<p>So, the value that this provides to me, is that I can extend an enum and be
+notified of all code pieces that need work.</p>
+
+<p>Now let's look at Golang. In Go we don't have enums. The idiomatic go way for
+such things appear to be type aliases and the <code>iota</code> keyword.</p>
+
+<p>For example:</p>
+
+<code><pre>
+type CarManufacturer int
+
+const (
+    Fiat = iota
+    Ford
+    Mercedes
+    Opel
+)
+
+var Gotcha CarManufacturer = 5
+
+func someFunction(x CarManufacturer) {
+    switch x {
+    case Fiat:
+    case Ford:
+    case Mercedes:
+    case Opel:
+    }
+}
+</pre></code>
+
+<p>This creates the constants <code>Fiat</code> to <code>Opel</code>, incrementing
+their value by one starting from <code>0</code>. However, as you can see, I can
+manually create another value with the same type. The problem is, that anyone can
+basically do this. So you never know whether you get some weird and unexpected
+values at runtime. While you can still handle those with a <code>default</code>
+case, my problem here really is the lack of static analysis and warnings. As the
+compiler basically can't know whether you've handled all cases.</p>
+<script src="https://utteranc.es/client.js"
+        repo="Bios-Marcel/bios-marcel.github.io"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        async>
+</script>
+<noscript>
+<p><b>If you wish to access the comment section, you need to enable JavaScript.</b></p>
+</noscript>
+</article>
+<footer>
+<hr>
+<div class="footer-bar">
+<a href="/blog-test/feed.xml">RSS-Feed</a>
+</div>
+</footer>
+</body>
+</html>

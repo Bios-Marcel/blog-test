@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+<link rel="stylesheet" type="text/css" href="/blog-test/base.css">
+
+<link rel="icon" href="data:,"/>
+<title>VPNs and the lies you are being fed | Marcel Schramm</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="UTF-8"/>
+<meta name="author" content="Marcel Schramm"/>
+<meta name="description" content="My opinion on VPN services and how their advertisement is missleading." />
+<meta property="og:locale" content="en_GB"/>
+<meta property="og:site_name" content="Marcel Schramm"/>
+<meta property="og:title" content="VPNs and the lies you are being fed" />
+<meta property="og:type" content="article"/>
+<meta property="article:tag" content="philosophy"/>
+<meta property="article:tag" content="vpn"/>
+<meta property="article:published_time" content="2019-05-11T00:00:00Z" />
+</head>
+<body>
+<header>
+<div class="site-info">
+<span class="site-name"><a href="/blog-test/">Marcel Schramm</a></span>
+</div>
+<nav>
+<a class="menu-link" href="/blog-test/">Home</a>
+<a class="menu-link" href="/blog-test/pages/about.html">About</a>
+</nav>
+</header>
+<article>
+<h1>VPNs and the lies you are being fed</h1>
+<p class="authoring-date">Written on 11 May 2019</p>
+<p>Today I'd like to talk about VPNs, despite
+the fact that many people have probably already told you the same
+thing that I am about to tell you.</p>
+
+<p>So, I have noticed that recently a lot of YouTubers are advertising VPN
+services. Those are usually PIA or NordVPN. The promise usually made in
+those advertisements, is something along the lines of <em>&quot;Privacy due to full
+encryption of your traffic&quot;</em>. Now that sure sounds great, right? Err ... not
+really. While encryption would prevent someone from reading or manipulating
+your data, you can't simply End-To-End encrypt any traffic.</p>
+
+<p>Usually when you make a requet over the internet, you (the host) create your
+request and target some other machine (the server), that lies somewhere else.
+Since you are not directly connected to the server (in the same local area
+network), your request has to be routed over the internet, meaning it will
+hop from device to device, trying to find the most efficient route to your
+requests target.</p>
+
+<p>So yes, theoretically you could now encrypt this request before sending it, but
+your target server would not understand your encrypted request, since it has no
+clue about how to decrypt it. So what a VPN means when it claims that it
+encrypts your traffic, is that the route to the VPN (your man in the middle),
+will be fully encrypted. As soon as your VPN has proxied your request to your
+actual target, your traffic will look the same as it did before encrypting it.
+This doesn't mean that unless you use a VPN your traffic is always unencrypted.
+As long as your requests uses some protocol that has encryption built-in, your
+data will still be encrypted til it reaches the requests target.</p>
+
+<p>So, what does this mean in the end? It means you don't really achieve privacy
+just by using some VPN service.</p>
+
+<p>Some people actually get a VPN in order to hide their malicious activies from
+third parties that could potentially track them down. Does that at least make
+sense? Yes, kinda. The original location of the request will not be known to
+a third party. However, they can still ask your VPN who you are or where you
+are. And I doubt you really want to trust some random company that promises
+you full privacy for just <em>2.99€</em> a month. However, using the VPN to access
+some service that has geographical restrictions or get around blockades that
+your government has put up, a VPN is still fine. Even though a simple proxy
+would probably do the job, unless your government does deep packet inspection.</p>
+
+<p>Let's not get started talking about free VPN services, like the one that
+facebook offered (or still does?). They obviously don't do this because they
+want to keep everyone from reading your precious traffic.</p>
+
+<p>Anyway ... back to the YouTubers! It's a shame that strong social media
+presences advocate for something they don't seem to understand much about. If
+they'd really care about their audiences, they should not advertise such
+services or at least inform themselves a bit before doing so. In order to
+prevent such false advertisements.</p>
+
+<p><b>EDIT:<b></p>
+
+<p>Someone has pointed out to me that those YouTubers are being paid for making
+those advertisements in their videos. I was well aware of that when writing
+the post, however, I didn't feel like this would be worth mentioning, because
+even if you are paid for something, that doesn't mean you should lie, not inform
+yourself or abandon all your values.</p>
+<script src="https://utteranc.es/client.js"
+        repo="Bios-Marcel/bios-marcel.github.io"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        async>
+</script>
+<noscript>
+<p><b>If you wish to access the comment section, you need to enable JavaScript.</b></p>
+</noscript>
+</article>
+<footer>
+<hr>
+<div class="footer-bar">
+<a href="/blog-test/feed.xml">RSS-Feed</a>
+</div>
+</footer>
+</body>
+</html>

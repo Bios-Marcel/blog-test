@@ -1,43 +1,12 @@
-<!DOCTYPE html>
-<html lang="en-GB">
-<head>
+---
+layout: post
+title: Why do people expect software to be for free
+---
 
-<link rel="stylesheet" type="text/css" href="/blog-test/base.css">
-
-<link rel="icon" href="data:,"/>
-<title>Why do people expect software to be for free? | Marcel Schramm</title>
-<meta content='text/html; charset=utf-8' http-equiv='Content-Type'/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta charset="UTF-8"/>
-<meta name="author" content="Marcel Schramm"/>
-<meta name="description" content="Thoughts on peoples shift in expectations on what they should have to pay for software." />
-<meta property="og:locale" content="en_GB"/>
-<meta property="og:site_name" content="Marcel Schramm"/>
-<meta property="og:title" content="Why do people expect software to be for free?" />
-<meta property="og:type" content="article"/>
-<meta property="article:tag" content="philosophy"/>
-<meta property="article:published_time" content="2018-11-15T00:00:00Z" />
-</head>
-<body>
-<header>
-<div class="site-info">
-<span class="site-name"><a href="/blog-test/">Marcel Schramm</a></span>
-</div>
-<nav>
-<a class="menu-link" href="/blog-test/">Home</a>
-<a class="menu-link" href="/blog-test/pages/about.html">About</a>
-</nav>
-</header>
-<article>
-<h1>Why do people expect software to be for free?</h1>
-<p class="authoring-date">Written on 15 November 2018</p>
-<p>
 Recently I have been wondering why everyone seems to expect software
 to be free. Free software has existed for quite a while, but
 many people have started to expect software to be free by default.
-</p>
 
-<p>
 I assume that many people think that the software they use
 in their daily life is already free. Let's take Facebook as an example.
 Do you think Facebook is free? Yes, it is free to use, however, this doesn't
@@ -46,16 +15,9 @@ with your personal data and you are probably seeing ads, unless you are
 using an ad-blocker. By the way, even some ad-blockers aren't completely
 free, some actually mine data or only block ads that they aren't paid for.
 The same goes for other free-to-use software that you use.
-</p>
 
-<p>
-<em>
-In case you are interested in using an ad-blocker, I suggest you take
-at look at <a href="https://github.com/gorhill/uBlock)">UBlock Origin</a>.
-</em>
-</p>
+*In case you are interested in using an ad-blocker, I suggest you take at look at [UBlock Origin](https://github.com/gorhill/uBlock).*
 
-<p>
 Okay, so what do we pay for? We pay for games, right? Buying a AAA game
 for 60€ still seems to be accepted by most gamers. However, would they buy
 a 5€ game for their smartphone? Unlikely. I have noticed that many people
@@ -65,9 +27,7 @@ I assume this is due to the fact that smartphone apps feel
 more like a "side thing" that you just use in order to keep the boredom away.
 There are also apps that don't focus on entertainment. As far as I know,
 those kind of apps are less used by the average smartphone user though.
-</p>
 
-<p>
 Do I pay for mobile applications? No, not really, the only app I have ever bought
 was Teamspeak 3 and I refunded it, since it was terrible. However, I do not like
 to use applications that are subsidized by advertisements, because I believe that
@@ -77,48 +37,38 @@ using up the space on your screen or even adding trash to your devices system.
 I generally believe the way that most advertisements are made today, is very
 dishonest. Whenever seeing an advertisement on the TV, I feel like I am being
 lied to.
-</p>
 
-<p>
 In order to avoid such subsidation models, I try to use as much truly
-<b>free software</b> as possible, also referred to as <b>free open source software</b>.
+**free software** as possible, also referred to as **free open source software**.
 However, people should be paid for the work they do, right?
-</p>
 
-<p>
 Yes, everyone should be paid for the work they do, at least I believe so.
 So, what can you do?
 I suggest you start to try using more free open source software and if you
 like what you are getting, drop a donation from time to time, it really helps!
 Some software projects are actually completely subsidized by donations, for
-example an operating system called <a href="https://elementary.io/de/">Elementary OS</a>.
+example an operating system called [Elementary OS](https://elementary.io/de/).
 It has adopted the `pay what you want` model, meaning that if you want to, you
 can just not pay anything. The system also has a software store that allows you
 to optionally pay for anything that you install via the store. Such principles
 are viable and are being used, however, most companies still try to maximize
 their outcome by any chance and therefore such things will unlikely ever be
 adopted by big companies.
-</p>
 
-<p>
-Another good payment model is the one that <a href="https://play.euw.leagueoflegends.com/">League of Legends</a> is using.
+Another good payment model is the one that [League of Legends](https://play.euw.leagueoflegends.com/en_GB) is using.
 You can download and play the game for free, however, you can still
 purchase ingame items in exchange for real money. Those ingame items
 don't provide the player any advantages over the other players, since
 they are only visual items. Those items can be skins for characters
 or emoticons and ward-skins. League of Legends has been doing it this way
 for a long time now and it seems to work just fine.
-</p>
 
-<p>
-<b>EDIT: Someone just pointed out that you could also buy
+**EDIT: Someone just pointed out that you could also buy
 champions(playable characters). In the beginning you only have a specific
 set of characters. Until season 6 or 7 it was quite hard to get many
 characters in a short amount of time. At a certain point they made it
-much easier though.</b>
-</p>
+much easier though.**
 
-<p>
 So, what's the point of this post? I'd like to encourage you to start paying for
 software. I assume just like me, many of you are annoyed by advertisements,
 especially looking at mobile aplications and websites. If more people were to
@@ -128,27 +78,6 @@ you have to use free open source software
 though, that's just my opinion. However, think about paying for what you use,
 because just like the machine that you use for reading this post, someone
 had to produce that software.
-</p>
 
-<p>
 Food for thought: Why do you think that no one expects physical goods or
-services should be free?    
-</p>
-<script src="https://utteranc.es/client.js"
-        repo="Bios-Marcel/bios-marcel.github.io"
-        issue-term="title"
-        theme="preferred-color-scheme"
-        async>
-</script>
-<noscript>
-<p><b>If you wish to access the comment section, you need to enable JavaScript.</b></p>
-</noscript>
-</article>
-<footer>
-<hr>
-<div class="footer-bar">
-<a href="/blog-test/feed.xml">RSS-Feed</a>
-</div>
-</footer>
-</body>
-</html>
+services should be free?

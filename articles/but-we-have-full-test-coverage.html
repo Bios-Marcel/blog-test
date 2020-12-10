@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+<link rel="stylesheet" type="text/css" href="/blog-test/base.css">
+
+<link rel="icon" href="data:,"/>
+<title>But we have full test coverage | Marcel Schramm</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="UTF-8"/>
+<meta name="author" content="Marcel Schramm"/>
+<meta name="description" content="An explanation on why test coverage on it&#39;s own doesn&#39;t mean anything." />
+<meta property="og:locale" content="en_GB"/>
+<meta property="og:site_name" content="Marcel Schramm"/>
+<meta property="og:title" content="But we have full test coverage" />
+<meta property="og:type" content="article"/>
+<meta property="article:tag" content="programming"/>
+<meta property="article:tag" content="testing"/>
+<meta property="article:published_time" content="2019-03-27T00:00:00Z" />
+</head>
+<body>
+<header>
+<div class="site-info">
+<span class="site-name"><a href="/blog-test/">Marcel Schramm</a></span>
+</div>
+<nav>
+<a class="menu-link" href="/blog-test/">Home</a>
+<a class="menu-link" href="/blog-test/pages/about.html">About</a>
+</nav>
+</header>
+<article>
+<h1>But we have full test coverage</h1>
+<p class="authoring-date">Written on 27 March 2019</p>
+<p>I often see people claiming that their tests are as good as they could
+get, since they have full (100%) test coverage. And obviously 100% coverage
+is as good as it could possibly get. Or is it not? You guessed it, coverage
+isn't everything, The quality of the tests plays a big role as well.</p>
+
+<p>Here is a little example of full test coverage that isn't very useful:</p>
+
+<code><pre>
+package testme
+
+var (
+    someMapping = map[int]string(
+        1: "Hello",
+        2: "World"
+    )
+
+    OutOfBoundsError = errors.New("Out of bounds")
+)
+
+func Something(input int) (output string, err error) {
+    if input > 0 {
+        return someMapping[input], nil
+    }
+
+    return "", OutOfBoundsError
+}
+</pre></code>
+
+
+<code><pre>
+package testme_test
+
+func TestSomething(t *testing.T) {
+    result, err := Something(1)
+    if err != nil {
+        t.Error("result should've been 'Hello', but an error was returned")
+    }
+
+    if result != "Hello" {
+        t.Errorf("result should've been 'Hello', but was '%s'", result)
+    }
+
+    result, err = Something(2)
+    if err != nil {
+        t.Error("result should've been 'World', but an error was returned")
+    }
+
+    if result != "World" {
+        t.Errorf("result should've been 'World', but was '%s'", result)
+    }
+
+    result, err = Somethng(0)
+    if err != nil {
+        t.Error("call should've returned an error, but it didn't")
+    }
+}
+</pre></code>
+
+<p>This code will test all statements, meaning that it will have full coverage.
+But it won't test all theoretically possible cases. When calling <code>Something</code>
+with <code>3</code>, we will get an empty string instead of the expected error, since
+accessing a non-existent key in a map will return the types default value.</p>
+
+<p>If you wanna test this out for yourself, go ahead and run this:</p>
+
+<code><pre>
+package main
+
+import "fmt"
+
+func main() {
+    wow := map[int]int{2: 4}
+    fmt.Println(wow[1])
+}
+</pre></code>
+
+<p>So whenever you write a test, don't look at the code coverage first, instead
+pay attention to whether you have tested all possible cases. However, if a
+function doesn't have full coverage, that is probably an indicator for cases
+that aren't handled or even <abbr title="code that can never be called, no matter what happens">useless code</abbr>.</p>
+<script src="https://utteranc.es/client.js"
+        repo="Bios-Marcel/bios-marcel.github.io"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        async>
+</script>
+<noscript>
+<p><b>If you wish to access the comment section, you need to enable JavaScript.</b></p>
+</noscript>
+</article>
+<footer>
+<hr>
+<div class="footer-bar">
+<a href="/blog-test/feed.xml">RSS-Feed</a>
+</div>
+</footer>
+</body>
+</html>
